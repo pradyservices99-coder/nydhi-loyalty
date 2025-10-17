@@ -1,0 +1,11 @@
+﻿{
+  "id":2002002,
+  "email":"loyaltytest@example.com",
+  "customer":{
+    "id":"cust_201",
+    "tags":"retail",
+    "first_name":"Demo",
+    "last_name":"Customer"
+  },
+  "total_price":"99.00"
+}

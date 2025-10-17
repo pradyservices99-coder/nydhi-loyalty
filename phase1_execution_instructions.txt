@@ -1,0 +1,54 @@
+﻿PHASE 1 — Execution Instructions (PowerShell)
+
+Purpose:
+  - Provide step-by-step PowerShell commands to run the local dev app safely.
+  - Commands assume project at C:\Users\ADMIN\nydhi-loyalty
+
+Prerequisites:
+  - Node & npm installed
+  - Shopify CLI installed and logged in (shopify auth login)
+  - cloudflared installed if you use Cloudflare tunnels
+  - You must run PowerShell with sufficient privileges to run the commands below (non-admin OK for process-scoped ExecutionPolicy)
+
+1) Verify script file exists
+--------------------------------
+Test-Path "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1"
+
+2) If the file name ends with .txt, rename to .ps1
+--------------------------------
+Rename-Item "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1.txt" "phase1_setup.ps1"
+
+3) Unblock the script (if Windows marked it as downloaded)
+--------------------------------
+Unblock-File -Path "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1"
+
+4) (Optional) preview the script contents
+--------------------------------
+Get-Content -Path "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1" | Out-Host
+
+5) Run the script safely for this PowerShell process only
+--------------------------------
+PowerShell -NoProfile -ExecutionPolicy Bypass -File "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1"
+
+6) Set process policy manually (alternative)
+--------------------------------
+Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass -Force
+& "C:\Users\ADMIN\nydhi-loyalty\phase1_setup.ps1"
+
+7) Common manual commands
+--------------------------------
+npm install
+npm run dev
+shopify app dev --store nydhi-loyalty-dev-3.myshopify.com
+
+8) Revert any temporary execution policy change
+--------------------------------
+Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+
+9) Troubleshooting
+--------------------------------
+Unblock-File if script is blocked.
+Kill node.exe if file lock errors.
+Check shopify app config if dev store mismatch.
+
+End of file.

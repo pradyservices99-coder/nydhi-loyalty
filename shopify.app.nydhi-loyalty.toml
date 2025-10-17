@@ -1,13 +1,12 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "b00d81bd7608abdb93f85ae56918710f"
+client_id = "a892f96d98d55d99fa52c6e7137e57bd"
 name = "nydhi-loyalty"
-application_url = "https://example.com"
+application_url = "https://sold-surgeons-chart-barry.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-include_config_on_deploy = true
 
 [webhooks]
 api_version = "2026-01"
@@ -17,4 +16,8 @@ api_version = "2026-01"
 scopes = "write_products"
 
 [auth]
-redirect_urls = [ "https://example.com/api/auth" ]
+redirect_urls = [
+  "https://sold-surgeons-chart-barry.trycloudflare.com/auth/callback",
+  "https://sold-surgeons-chart-barry.trycloudflare.com/api/auth",
+  "https://sold-surgeons-chart-barry.trycloudflare.com/auth/shopify/callback"
+]

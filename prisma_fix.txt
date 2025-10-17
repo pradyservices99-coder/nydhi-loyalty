@@ -1,0 +1,16 @@
+NYDHI Prisma Quick Fix Guide
+---------------------------------
+
+If your Prisma or app build fails with:
+"EPERM: operation not permitted" or "query_engine-windows.dll.node" errors,
+run these commands in PowerShell:
+
+---------------------------------
+taskkill /F /IM node.exe
+Remove-Item -Recurse -Force "C:\Users\ADMIN\nydhi-loyalty\node_modules\.prisma"
+cd C:\Users\ADMIN\nydhi-loyalty
+npx prisma generate
+npm run dev
+---------------------------------
+
+💡 Tip: Run all commands in PowerShell as Administrator for smoother execution.
